@@ -1,0 +1,115 @@
+@import '../../../../themes/light-theme';
+
+@mixin button {
+  width: 20px;
+  height: 20px;
+  background-color: transparent;
+  color: $accent;
+  outline: none;
+  border: none;
+  border-radius: 50%;
+  font-size: auto;
+  margin: 0;
+  padding: 0;
+}
+
+@mixin list {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: auto;
+  overflow-x: hidden;
+  padding-bottom: 50px;
+}
+
+@mixin notelist-header {
+  width: 100%;
+  height: auto;
+  display: block;
+  flex-direction: column;
+  border-bottom: $g-border-color solid $g-border-size;
+  background-color: $secondary;
+
+  h1 {
+    color: $terciary;
+    font-weight: 300;
+    margin: 20px 10px 10px 20px;
+    font-size: 1.2em;
+  }
+
+  h5 {
+    color: $terciary;
+    font-size: 0.9em;
+    font-weight: 400;
+    margin: 10px 10px 10px 20px;
+  }
+
+  select {
+    color: $terciary;
+    margin: 0 10px 0 auto;
+    font-weight: 300;
+    width: 75px;
+    height: 25px;
+    font-size: 1em;
+    background-color: transparent;
+    outline: none;
+    border: none;
+  }
+
+  option {
+    color: $terciary;
+    background-color: $secondary;
+  }
+}
+
+#notelist {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  border-right: $g-border-color solid $g-border-size;
+  height: 100%;
+  width: 350px;
+  background-color: $primary;
+}
+
+#list {
+  @include list();
+  color: $terciary;
+}
+
+#notelist-header {
+  @include notelist-header();
+}
+
+#notelist-header-controls {
+  display: flex;
+  height: auto;
+  align-content: center;
+  align-items: center;
+}
+
+#emptyListDisplay {
+  font-size: 3.5em;
+  color: $accent;
+  padding: 10% 30px;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  align-items: center;
+
+  p {
+    margin-top: 30px;
+    font-size: 0.3em;
+    color: $terciary;
+  }
+}
+
+#add-note-btn {
+  width: 20px;
+  height: 20px;
+  background-color: transparent;
+  color: $accent;
+  font-size: auto;
+  margin: 3px;
+  padding: 0;
+}

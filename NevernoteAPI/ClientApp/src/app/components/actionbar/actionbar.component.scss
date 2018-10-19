@@ -1,0 +1,82 @@
+@import '../../themes/light-theme';
+
+@mixin button {
+  min-width: 40px;
+  min-height: 40px;
+  cursor: pointer;
+  background-color: $btn-bg;
+  color: $btn-color;
+  outline: none;
+  border: $btn-border-color;
+  border-radius: 50%;
+  font-size: 1.2em;
+  margin: 5px 0px;
+  transition: 0.2s background ease-in-out;
+
+  &:hover {
+    background-color: $accent;
+    color: $btn-hover-color;
+    border-color: $accent;
+  }
+
+  &:focus {
+    outline: none;
+  }
+}
+
+#actionbar {
+  width: 75px;
+  height: 100%;
+  margin: 0;
+  background-color: $actionbar-bg;
+  align-items: center;
+  align-content: center;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  border-right: $g-border-color solid $g-border-size;
+}
+
+#brand-logo {
+  background-color: transparent;
+  color: $accent;
+  border: none;
+  outline: none;
+  padding: 20px 20px 50px 20px;
+  font-family: 'Pacifico';
+  font-weight: 400;
+  font-size: 2em;
+
+  // img {
+  //   width: 100%;
+  //   height: auto;
+  // }
+}
+
+#add-note-btn {
+  @include button();
+  align-items: center;
+  justify-content: center;
+}
+
+#search-note-btn {
+  @include button();
+}
+
+#favorites-btn {
+  @include button();
+  margin-bottom: auto;
+}
+
+#github-btn {
+  @include button();
+  font-size: 1.3em;
+  align-self: flex-end;
+  margin: 10px auto;
+}
+
+#logout-btn {
+  @include button();
+  align-self: flex-end;
+  margin: 0px auto 10px auto;
+}

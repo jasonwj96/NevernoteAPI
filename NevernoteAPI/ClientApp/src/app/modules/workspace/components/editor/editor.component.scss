@@ -1,0 +1,199 @@
+@import '../../../../themes/light-theme';
+
+@mixin editor {
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+  background-color: $primary;
+}
+
+@mixin editor-button {
+  outline: none;
+  background: transparent;
+  border: none;
+  margin: auto 10px;
+  color: $quaternary;
+  transition: 0.2s color ease-in-out;
+
+  &:hover {
+    color: $accent;
+  }
+}
+
+@mixin editor-bar {
+  border-bottom: $g-border-color solid $g-border-size;
+  background-color: $primary;
+  height: auto;
+  width: 100%;
+  padding: 10px 40px 10px 20px;
+  display: flex;
+  flex-direction: row;
+}
+
+@mixin tag {
+  margin: auto 5px;
+  padding: 0px 20px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: auto;
+  max-width: 100px;
+  height: 25px;
+  background-color: $accent;
+  border-radius: 5px;
+  font-size: 0.8em;
+  color: $tag-color;
+  background-color: $tag-bg;
+  transition: 0.2s background ease-in-out;
+
+  &:hover {
+    background-color: $delete-color;
+  }
+
+  p {
+    text-align: center;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+input {
+  background-color: $primary;
+  width: 800px;
+  flex-shrink: initial;
+  height: 50px;
+  border: none;
+  color: $accent;
+  font-size: 1.8em;
+  padding: 0px 40px 10px 40px;
+  outline: none;
+  font-weight: 400;
+
+  &::placeholder {
+    color: $accent;
+  }
+}
+
+textarea {
+  background-color: $primary;
+  width: auto;
+  height: 400px;
+  border: none;
+  padding: 10px 40px;
+  font-size: 1em;
+  font-weight: 200;
+  outline: none;
+  resize: none;
+  color: $textarea-color;
+
+  &::placeholder {
+    color: $placeholder-color;
+  }
+}
+
+#editor {
+  @include editor();
+}
+
+#editor-toolbar {
+  @include editor-bar();
+
+  i {
+    cursor: pointer;
+    font-size: 1.4em;
+  }
+}
+
+#save-btn {
+  margin-right: auto;
+
+  &:hover {
+    color: $save-color;
+  }
+}
+
+#delete-btn {
+  transition: 0.2s color ease-in-out;
+  outline: none;
+  background: transparent;
+  border: none;
+  margin: auto 30px auto auto;
+  color: $quaternary;
+  align-self: flex-end;
+
+  &:hover {
+    color: none;
+    color: $delete-color;
+  }
+}
+
+.editor-button {
+  @include editor-button();
+}
+
+.fas.fa-star {
+  color: $accent;
+}
+
+#editor-tagbar {
+  @include editor-bar();
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  height: auto;
+  max-height: 200px;
+
+  i {
+    font-size: 1.4em;
+  }
+
+  > p {
+    margin: 10px 20px;
+    color: $secondary-dark;
+  }
+}
+
+#inputarea {
+  padding: 0 10px;
+}
+
+.tag {
+  @include tag();
+  margin: 5px;
+}
+
+#tag-input {
+  @include tag();
+  width: 70px;
+  color: $primary;
+  margin: 5px;
+
+  &::placeholder {
+    color: $primary;
+  }
+}
+
+#addtag-btn {
+  border: none;
+  color: $quaternary;
+  background-color: transparent;
+  outline: none;
+  cursor: pointer;
+
+  :focus {
+    outline: none;
+  }
+}
+
+#date-display {
+  text-align: right;
+  height: 30px;
+  box-sizing: border-box;
+  margin: 0 40px 0 0px;
+  p {
+    font-size: 0.9em;
+    margin-right: 10px;
+    color: $secondary-dark;
+  }
+}

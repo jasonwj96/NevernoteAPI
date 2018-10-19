@@ -1,0 +1,51 @@
+@import '../../../../themes/light-theme';
+
+.task {
+  display: flex;
+  flex-direction: column;
+  width: auto;
+  background-color: $primary;
+  height: auto;
+  border-bottom: $g-border-color solid $g-border-size;
+  padding: 10px 15px;
+  transition: 0.25s background ease-in-out;
+  cursor: pointer;
+
+  h3 {
+    font-weight: 500;
+    font-size: 1.1em;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    margin: 5px;
+  }
+
+  h5 {
+    font-weight: 400;
+    color: $quaternary;
+    margin: 5px;
+  }
+
+  p {
+    line-height: 1.5em;
+    font-size: 0.85em;
+    font-weight: 300;
+    height: auto;
+    width: auto;
+    margin: 5px;
+  }
+
+  &:hover {
+    background-color: $accent;
+    color: $hover-color;
+
+    h5 {
+      color: $hover-color;
+    }
+  }
+}
+
+#badge {
+  align-self: flex-end;
+  color: $tag-bg;
+}

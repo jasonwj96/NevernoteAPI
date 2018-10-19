@@ -1,0 +1,43 @@
+<div id="editor">
+  <!-- Toolbar-->
+  <div id="editor-toolbar">
+    <button class="editor-button">
+      <i class="far fa-clock"></i>
+    </button>
+    <button (click)="toggleFavorite()" class="editor-button">
+      <i id="favorite-btn" class="far fa-star" [ngClass]="selectedNote$.getValue().isFavorite ? 'fas fa-star': 'far fa-star' ">
+      </i>
+    </button>
+    <button id="save-btn" class="editor-button" (mouseup)="saveNote()">
+      <i class="far fa-save"></i>
+    </button>
+    <button id="delete-btn">
+      <i class="far fa-trash-alt"></i>
+    </button>
+  </div>
+
+  <!-- Tag bar -->
+  <div id="editor-tagbar">
+    <div class="tag" *ngFor="let tag of (selectedNote$ | async)?.tags">
+      <p>
+        {{tag}}
+      </p>
+    </div>
+
+    <input id="tag-input" *ngIf="canAddTag" placeholder="Write here">
+
+    <button (click)="canAddTag = true" id="addtag-btn" *ngIf="!canAddTag">
+      <i class="fas fa-plus"></i>
+    </button>
+  </div>
+
+  <!-- Input and textarea -->
+  <div id="date-display">
+    <p *ngIf="(selectedNote$ | async)?.dateCreated != ''">Last updated: {{(selectedNote$ | async)?.dateCreated}}</p>
+  </div>
+
+  <div id="inputarea">
+    <input [(ngModel)]="selectedNote$.getValue().title" type="text" placeholder="Write a title here">
+    <textarea [(ngModel)]="selectedNote$.getValue().description" cols="100%" rows="auto" placeholder="Write a description here"></textarea>
+  </div>
+</div>

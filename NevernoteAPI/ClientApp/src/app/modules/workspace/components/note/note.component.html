@@ -1,0 +1,14 @@
+<div class="task" (mouseup)="selectNote()">
+  <div id="badge">
+    <i [ngClass]="note.favorite ? 'fas fa-star': 'far fa-star'"></i>
+  </div>
+  <h3>
+    {{note.title}}
+  </h3>
+  <h5>
+    {{note.dateCreated}}
+  </h5>
+  <p>
+    {{getSummary()}}
+  </p>
+</div>

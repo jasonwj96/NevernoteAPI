@@ -1,0 +1,31 @@
+/* You can add global styles to this file, and also import other style files */
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+@import 'app/themes/light-theme';
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  width: 100vw;
+}
+
+* {
+  font-family: 'Montserrat', sans-serif;
+}
+
+*::-moz-focus-inner {
+  border: 0;
+}
+
+a {
+  color: #000;
+}
+
+.mat-simple-snackbar {
+  color: #fff !important;
+  background-color: $accent !important;
+}
+
+.mat-simple-snackbar-action {
+  color: #ffee00 !important;
+}

@@ -1,0 +1,29 @@
+<div id="notelist">
+  <!-- List header and controls -->
+  <div id="notelist-header">
+    <h1>MY TASKS</h1>
+    <div id="notelist-header-controls">
+      <h5> {{(noteService.getNotelist() | async)?.length}} tasks</h5>
+      <select name="Order" id="order-select">
+        <option value="">Sort</option>
+        <option value="A - Z">A - Z</option>
+        <option value="Time">Time</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- Tasklist -->
+  <div id="list">
+    <div *ngFor="let note of noteService.getNotelist() | async">
+      <app-task [note]="note"></app-task>
+    </div>
+
+    <div id="emptyListDisplay" *ngIf="(noteService.getNotelist() | async)?.length === 0">
+      <i class="fab fa-fort-awesome-alt"></i>
+      <p>Looks like your tasks are in another castle, Press the
+        <span id="add-note-btn">
+          <i class="fas fa-plus"></i>
+        </span> icon to add a new task.
+      </p>
+    </div>
+  </div>
