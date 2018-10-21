@@ -1,4 +1,4 @@
-@import '../../../../themes/light-theme';
+@import '../../../../themes/dark-theme';
 
 @mixin editor {
   flex-direction: column;
@@ -148,7 +148,7 @@ textarea {
     font-size: 1.4em;
   }
 
-  > p {
+  >p {
     margin: 10px 20px;
     color: $secondary-dark;
   }
@@ -191,6 +191,7 @@ textarea {
   height: 30px;
   box-sizing: border-box;
   margin: 0 40px 0 0px;
+
   p {
     font-size: 0.9em;
     margin-right: 10px;

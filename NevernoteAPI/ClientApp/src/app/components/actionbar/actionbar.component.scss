@@ -1,4 +1,4 @@
-@import '../../themes/light-theme';
+@import '../../themes/dark-theme';
 
 @mixin button {
   min-width: 40px;
@@ -25,7 +25,7 @@
 }
 
 #actionbar {
-  width: 75px;
+  width: 60px;
   height: 100%;
   margin: 0;
   background-color: $actionbar-bg;
@@ -39,18 +39,18 @@
 
 #brand-logo {
   background-color: transparent;
-  color: $accent;
+  color: $brand-logo;
   border: none;
   outline: none;
   padding: 20px 20px 50px 20px;
   font-family: 'Pacifico';
   font-weight: 400;
-  font-size: 2em;
+  font-size: 1.7em;
+  transition: 0.2s color ease-in-out;
 
-  // img {
-  //   width: 100%;
-  //   height: auto;
-  // }
+  &:hover {
+    color: $brand-logo-hover;
+  }
 }
 
 #add-note-btn {

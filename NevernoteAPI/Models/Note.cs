@@ -42,10 +42,5 @@ namespace NevernoteAPI.Models
             get;
             set;
         }
-
-        public override string ToString()
-        {
-            return String.Format("Id: {0}, Title: {1}, Description: {2},+} DateCreated: {3}, Tags: {4}, IsFavorite: {5}", Id, Title, Description, DateCreated, Tags, IsFavorite);
-        }
     }
 }

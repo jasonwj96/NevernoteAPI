@@ -20,7 +20,7 @@ namespace NevernoteAPI.Controllers
         {
             var notes = new List<Note>();
 
-            for (int i = 0; i < 100; i++)
+            for (int i = 0; i < 10; i++)
             {
                 var newNote = new Note();
                 newNote.Id = i.ToString();

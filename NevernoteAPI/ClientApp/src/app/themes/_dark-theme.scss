@@ -1,17 +1,47 @@
-$accent: #7014e8;
+//Main palette
+// $accent: #7014e8;
+$accent: #8c00ff;
+$g-border-color: #353535;
+$g-border-size: 0px; //no borders
 
-$primary: #202020;
-$terciary: #ffffff;
-$secondary: #131313;
-$quaternary: #868686;
+$primary: #161616;
+$secondary: #f7f7f7;
+$terciary: #d3d3d3;
+$quaternary: #dbdbdb;
 $secondary-dark: #9b9b9b;
 
-$hover-color: #fff;
-$delete-color: #db0000;
+//Actionbar component
+$actionbar-bg: #222222;
 
-$placeholder-color: #fff;
-$textarea-color: #fff;
+//Brand logo
+$brand-logo: #969696;
+$brand-logo-hover: #fff;
+
+//Actionbar component buttons
+$btn-bg: transparent;
+$btn-color: #969696;
+$btn-link: #dbdbdb;
+$btn-hover-bg: #006eff;
+$btn-hover-color: #fff;
+$btn-border-color: transparent;
+
+//Notelist component
+$notelist-header-bg: #272727;
+$notelist-option-bg: #272727;
+$notelist-option-color: #fff;
+
+//Editor component
+$hover-color: #fff;
+$delete-color: #e90404;
+
+$placeholder-color: #111;
+$textarea-color: #111;
 $tag-color: #fff;
-$tag-bg: #ffd900;
+$tag-bg: #ffad17;
 $favorite-color: #ffad17;
 $save-color: #2dbe60;
+
+//Snackbar
+$snackbar-bg: $accent;
+$snackbar-color: #111;
+$snackbar-btn-color: #111;

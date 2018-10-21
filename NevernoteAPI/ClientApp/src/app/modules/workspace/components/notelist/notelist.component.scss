@@ -1,4 +1,4 @@
-@import '../../../../themes/light-theme';
+@import '../../../../themes/dark-theme';
 
 @mixin button {
   width: 20px;
@@ -28,7 +28,7 @@
   display: block;
   flex-direction: column;
   border-bottom: $g-border-color solid $g-border-size;
-  background-color: $secondary;
+  background-color: $notelist-header-bg;
 
   h1 {
     color: $terciary;
@@ -58,7 +58,7 @@
 
   option {
     color: $terciary;
-    background-color: $secondary;
+    background-color: $notelist-option-bg;
   }
 }
 
@@ -69,7 +69,7 @@
   border-right: $g-border-color solid $g-border-size;
   height: 100%;
   width: 350px;
-  background-color: $primary;
+  background-color: $notelist-header-bg;
 }
 
 #list {
