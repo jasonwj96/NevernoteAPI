@@ -47,21 +47,18 @@ namespace NevernoteAPI.Controllers
             return "${id}";
         }
 
-        // POST api/notes
         [HttpPost]
         public void Post([FromBody] string value)
         {
 
         }
 
-        // PUT api/notes/5
         [HttpPut("{id}")]
         public void Put(int id, [FromBody] string value)
         {
 
         }
 
-        // DELETE api/notes/5
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
