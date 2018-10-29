@@ -26,7 +26,6 @@ namespace NevernoteAPI
             get;
         }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
 
@@ -37,9 +36,11 @@ namespace NevernoteAPI
                 configuration.RootPath = "ClientApp/dist";
             });
 
+            //DbContext configuration
+            services.AddDbContext<Database>(options => Configuration.GetConnectionString("DatabaseConnection"));
+
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 
         {

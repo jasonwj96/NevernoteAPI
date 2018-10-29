@@ -7,6 +7,7 @@ import { MatSnackBar } from '@angular/material';
   providedIn: 'root'
 })
 export class NoteService {
+
   private selectedNote$: BehaviorSubject<Note> = new BehaviorSubject<Note>(
     new Note('', '', '', '')
   );
