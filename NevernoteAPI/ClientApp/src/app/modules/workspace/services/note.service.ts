@@ -3,6 +3,7 @@ import { Note } from '../Models/Note';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject } from 'rxjs';
 import { MatSnackBar } from '@angular/material';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -39,10 +40,8 @@ export class NoteService {
   }
 
   createNote() {
-    this.selectedNote$.getValue().id = '8';
-    this.selectedNote$.getValue().dateCreated = new Date().toLocaleDateString(
-      'es'
-    );
+    this.selectedNote$.getValue().ID = '8';
+    this.selectedNote$.getValue().dateCreated = new Date().toLocaleDateString('es');
 
     this.http
       .post(`${this.apiUrl}/add`, this.selectedNote$.getValue())

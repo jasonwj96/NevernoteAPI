@@ -1,5 +1,5 @@
 export class Note {
-  id: string;
+  ID: int;
   title: string;
   description: string;
   dateCreated: string;
@@ -7,15 +7,15 @@ export class Note {
   tags: string[];
 
   constructor(
-    id: string,
+    ID: int,
     title: string,
     description: string,
     dateCreated: string
   ) {
-    this.id = id.trim();
-    this.title = title.trim();
-    this.description = description.trim();
-    this.dateCreated = dateCreated.trim();
+    this.ID = ID;
+    this.title = title;
+    this.description = description;
+    this.dateCreated = dateCreated;
     this.isFavorite = false;
     this.tags = null;
   }
