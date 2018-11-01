@@ -1,8 +1,9 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
+using NevernoteAPI.Models;
 
-namespace NevernoteAPI.Models
+namespace NevernoteAPI.Data
 {
     public partial class NevernoteContext : DbContext
     {
@@ -10,8 +11,7 @@ namespace NevernoteAPI.Models
         {
         }
 
-        public NevernoteContext(DbContextOptions<NevernoteContext> options)
-            : base(options)
+        public NevernoteContext(DbContextOptions<NevernoteContext> options) : base(options)
         {
         }
 
@@ -19,7 +19,6 @@ namespace NevernoteAPI.Models
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -27,14 +26,14 @@ namespace NevernoteAPI.Models
             modelBuilder.Entity<Note>(entity =>
             {
                 entity.Property(e => e.Id)
-                    .HasColumnName("ID")
-                    .ValueGeneratedNever();
+                    .ValueGeneratedOnAdd();
 
                 entity.Property(e => e.DateCreated)
                     .IsRequired()
                     .HasMaxLength(50);
 
-                entity.Property(e => e.Description).HasMaxLength(50);
+                entity.Property(e => e.Description)
+                    .HasMaxLength(50);
 
                 entity.Property(e => e.Title)
                     .IsRequired()

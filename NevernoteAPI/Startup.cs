@@ -8,6 +8,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using NevernoteAPI.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -40,7 +41,7 @@ namespace NevernoteAPI
 
             //DbContext configuration
             //Connection string pulled from appsettings.json
-            services.AddDbContext<DatabaseContext>(options =>
+            services.AddDbContext<NevernoteContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("DatabaseConnection")));
         }
 
@@ -65,6 +66,7 @@ namespace NevernoteAPI
             app.UseSpa(spa =>
             {
                 spa.Options.SourcePath = "ClientApp/dist";
+
                 if (env.IsDevelopment())
                 {
                     spa.UseAngularCliServer(npmScript: "start");

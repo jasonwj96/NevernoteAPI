@@ -8,9 +8,8 @@ import { MatSnackBar } from '@angular/material';
   providedIn: 'root'
 })
 export class NoteService {
-
   private selectedNote$: BehaviorSubject<Note> = new BehaviorSubject<Note>(
-    new Note('', '', '', '')
+    new Note(0, '', '', '')
   );
 
   private noteList$: BehaviorSubject<Note[]>;
@@ -40,8 +39,10 @@ export class NoteService {
   }
 
   createNote() {
-    this.selectedNote$.getValue().ID = '8';
-    this.selectedNote$.getValue().dateCreated = new Date().toLocaleDateString('es');
+    this.selectedNote$.getValue().Id = 8;
+    this.selectedNote$.getValue().dateCreated = new Date().toLocaleDateString(
+      'es'
+    );
 
     this.http
       .post(`${this.apiUrl}/add`, this.selectedNote$.getValue())

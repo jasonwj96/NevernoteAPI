@@ -16,7 +16,7 @@ export class ActionbarComponent implements OnInit {
   ngOnInit() {}
 
   addNote() {
-    const blankNote: Note = new Note('', '', '', '');
+    const blankNote: Note = new Note(0, '', '', '');
     this.noteService.selectNote(blankNote);
   }
 }

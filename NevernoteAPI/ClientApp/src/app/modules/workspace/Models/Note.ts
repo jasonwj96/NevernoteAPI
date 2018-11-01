@@ -1,5 +1,5 @@
 export class Note {
-  ID: int;
+  Id: number;
   title: string;
   description: string;
   dateCreated: string;
@@ -7,12 +7,12 @@ export class Note {
   tags: string[];
 
   constructor(
-    ID: int,
+    Id: number,
     title: string,
     description: string,
     dateCreated: string
   ) {
-    this.ID = ID;
+    this.Id = Id;
     this.title = title;
     this.description = description;
     this.dateCreated = dateCreated;
