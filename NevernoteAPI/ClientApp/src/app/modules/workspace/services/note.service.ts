@@ -22,6 +22,7 @@ export class NoteService {
 
   constructor(private http: HttpClient, private snackBar: MatSnackBar) {
     this.noteList$ = this.fetchNotelist();
+    this.newMessage('Welcome back!');
   }
 
   newMessage(message: string) {

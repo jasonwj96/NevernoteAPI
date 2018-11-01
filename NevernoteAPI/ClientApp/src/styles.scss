@@ -1,6 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 @import '~@angular/material/prebuilt-themes/indigo-pink.css';
-@import 'app/themes/light-theme';
+@import 'app/themes/dark-theme';
 
 @font-face {
   font-family: Montserrat;
@@ -34,9 +34,9 @@ a {
 
 .mat-simple-snackbar {
   color: #fff !important;
-  background-color: $accent !important;
+  background-color: #272727 !important;
 }
 
 .mat-simple-snackbar-action {
-  color: #ffee00 !important;
+  color: #ffffff !important;
 }
