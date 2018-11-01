@@ -3,6 +3,7 @@ import { Note } from '../Models/Note';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject } from 'rxjs';
 import { MatSnackBar } from '@angular/material';
+import { environment } from '../../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -13,10 +14,11 @@ export class NoteService {
   );
 
   private noteList$: BehaviorSubject<Note[]>;
-  apiPort = 5001;
-  apiUrl = `https://localhost:${this.apiPort}/api/notes`;
+  // apiPort = 5001;
+  // apiUrl = `https://localhost:${this.apiPort}/api/notes`;
+  private apiUrl = environment.API_URL;
   snackBarDuration = 4000; // miliseconds
-  snackBarAction = `ok`;
+  snackBarAction = `ok`; // the text on the confirmation message in the snackbar
 
   constructor(private http: HttpClient, private snackBar: MatSnackBar) {
     this.noteList$ = this.fetchNotelist();
@@ -39,11 +41,6 @@ export class NoteService {
   }
 
   createNote() {
-    this.selectedNote$.getValue().Id = 8;
-    this.selectedNote$.getValue().dateCreated = new Date().toLocaleDateString(
-      'es'
-    );
-
     this.http
       .post(`${this.apiUrl}/add`, this.selectedNote$.getValue())
       .subscribe((messageObj: { message: string }) => {

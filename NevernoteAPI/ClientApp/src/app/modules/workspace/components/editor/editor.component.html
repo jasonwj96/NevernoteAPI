@@ -5,8 +5,7 @@
       <i class="far fa-clock"></i>
     </button>
     <button (click)="toggleFavorite()" class="editor-button">
-      <i id="favorite-btn" class="far fa-star" [ngClass]="selectedNote$.getValue().isFavorite ? 'fas fa-star': 'far fa-star' ">
-      </i>
+      <i id="favorite-btn" class="far fa-star" [ngClass]="selectedNote$.getValue().isFavorite ? 'fas fa-star': 'far fa-star'"></i>
     </button>
     <button id="save-btn" class="editor-button" (mouseup)="saveNote()">
       <i class="far fa-save"></i>

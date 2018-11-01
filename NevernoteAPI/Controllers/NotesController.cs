@@ -29,28 +29,14 @@ namespace NevernoteAPI.Controllers
         {
             var notes = _dbcontext.Notes.ToList<Note>();
 
-            // for (var i = 0; i < 10; i++)
-            // {
-            //     var note = new Note()
-            //     {
-            //         Id = i,
-            //         Title = String.Format("Note #{0}", i),
-            //         Description = "Description",
-            //         DateCreated = DateTime.Now.ToString(),
-            //         Tags = "",
-            //         IsFavorite = true
-            //     };
-
-            //     notes.Add(note);
-            // }
-
             return new JsonResult(notes);
         }
 
         [HttpPost]
-        public ActionResult Post([FromBody] Note note)
+        public async Task<IActionResult> Post([FromBody] Note note)
         {
-            _dbcontext.Notes.Add(note);
+            note.DateCreated = String.Format("{0}/{1}/{2}", DateTime.Now.Day, DateTime.Now.Month, DateTime.Now.Year);
+            await _dbcontext.Notes.AddAsync(note);
             _dbcontext.SaveChanges();
             return new JsonResult(note);
         }
