@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace NevernoteAPI.Controllers
 {
@@ -23,6 +24,7 @@ namespace NevernoteAPI.Controllers
             _dbcontext = database;
         }
 
+        //Returns today's date
         public static string Today()
         {
             return String.Format("{0}/{1}/{2}", DateTime.Now.Day, DateTime.Now.Month, DateTime.Now.Year);
@@ -30,13 +32,14 @@ namespace NevernoteAPI.Controllers
 
         // GET api/notes
         [HttpGet]
-        public ActionResult Get()
+        public async Task<ActionResult> Get()
         {
-            var notes = _dbcontext.Notes.ToList<Note>();
+            var notes = await _dbcontext.Notes.ToListAsync<Note>();
 
             return new JsonResult(notes);
         }
 
+        // POST api/notes
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] Note note)
         {
@@ -48,19 +51,22 @@ namespace NevernoteAPI.Controllers
             return new JsonResult(note);
         }
 
+        // DELETE api/notes?id=1
         [HttpDelete]
         public async Task<ActionResult> Delete([FromQuery] int id)
         {
             _dbcontext.Notes.Remove(_dbcontext.Notes.Find(id));
+
             await _dbcontext.SaveChangesAsync();
 
             return new JsonResult("Note successfully deleted");
         }
 
+        // PUT api/notes?id=1
         [HttpPut]
         public async Task<ActionResult> Put([FromQuery] int id, [FromBody] Note note)
         {
-            var entity = _dbcontext.Notes.FirstOrDefault(n => n.Id == id);
+            var entity = await _dbcontext.Notes.FirstOrDefaultAsync(n => n.Id == id);
 
             entity.Title = note.Title;
             entity.Description = note.Description;
@@ -69,6 +75,7 @@ namespace NevernoteAPI.Controllers
             entity.Tags = note.Tags;
 
             _dbcontext.Update(entity);
+
             await _dbcontext.SaveChangesAsync();
 
             return new JsonResult("Note successfully updated");

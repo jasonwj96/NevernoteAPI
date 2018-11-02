@@ -5,7 +5,8 @@
       <i class="far fa-clock"></i>
     </button>
     <button (click)="toggleFavorite()" class="editor-button">
-      <i id="favorite-btn" class="far fa-star" [ngClass]="selectedNote$.getValue().isFavorite ? 'fas fa-star': 'far fa-star'"></i>
+      <i id="favorite-btn" class="far fa-star" [ngClass]="selectedNote$.getValue().isFavorite ? 'fas fa-star': 'far fa-star'">
+      </i>
     </button>
     <button id="save-btn" class="editor-button" (mouseup)="saveNote()">
       <i class="far fa-save"></i>
@@ -37,6 +38,7 @@
 
   <div id="inputarea">
     <input [(ngModel)]="selectedNote$.getValue().title" type="text" placeholder="Write a title here">
-    <textarea [(ngModel)]="selectedNote$.getValue().description" cols="100%" rows="auto" placeholder="Write a description here"></textarea>
+    <textarea [(ngModel)]="selectedNote$.getValue().description" cols="100%" rows="auto" placeholder="Write a description here">
+    </textarea>
   </div>
 </div>
