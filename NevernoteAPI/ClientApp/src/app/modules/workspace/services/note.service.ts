@@ -10,7 +10,7 @@ import { environment } from '../../../../environments/environment';
 })
 export class NoteService {
   private selectedNote$: BehaviorSubject<Note> = new BehaviorSubject<Note>(
-    new Note(0, '', '', '')
+    new Note(0, null, null, null)
   );
 
   private noteList$: BehaviorSubject<Note[]>;
@@ -21,7 +21,7 @@ export class NoteService {
   snackBarAction = `ok`; // the text on the confirmation message in the snackbar
 
   constructor(private http: HttpClient, private snackBar: MatSnackBar) {
-    this.noteList$ = this.fetchNotelist();
+    this.noteList$ = this.loadNotelist();
     this.newMessage('Welcome back!');
   }
 
@@ -49,11 +49,13 @@ export class NoteService {
       });
   }
 
+  // Returns the notelist$ field from this service
   getNotelist(): BehaviorSubject<Note[]> {
     return this.noteList$;
   }
 
-  fetchNotelist(): BehaviorSubject<Note[]> {
+  // Retrieves the notelist from the API
+  loadNotelist(): BehaviorSubject<Note[]> {
     return this.http.get<Note[]>(this.apiUrl) as BehaviorSubject<Note[]>;
   }
 }

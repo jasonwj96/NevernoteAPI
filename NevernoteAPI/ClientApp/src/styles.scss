@@ -34,7 +34,7 @@ a {
 
 .mat-simple-snackbar {
   color: #fff !important;
-  background-color: #272727 !important;
+  background-color: $snackbar-bg !important;
 }
 
 .mat-simple-snackbar-action {
