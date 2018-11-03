@@ -1,5 +1,7 @@
 import { Component, OnInit, OnChanges } from '@angular/core';
 import { NoteService } from '../../services/note.service';
+import { Observable } from 'rxjs';
+import { Note } from '../../Models/Note';
 
 @Component({
   selector: 'app-notelist',
@@ -7,7 +9,10 @@ import { NoteService } from '../../services/note.service';
   styleUrls: ['./notelist.component.scss']
 })
 export class NotelistComponent implements OnInit {
-  constructor(public noteService: NoteService) { }
+  notelist$: Observable<Note[]>;
+  constructor(public noteService: NoteService) {}
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.notelist$ = this.noteService.loadNotelist();
+  }
 }

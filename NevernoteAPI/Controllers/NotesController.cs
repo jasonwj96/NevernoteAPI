@@ -24,7 +24,7 @@ namespace NevernoteAPI.Controllers
             _dbcontext = database;
         }
 
-        //Returns today's date
+        //Returns current day's date in dd/mm/yy format.
         public static string Today()
         {
             return String.Format("{0}/{1}/{2}", DateTime.Now.Day, DateTime.Now.Month, DateTime.Now.Year);
@@ -48,7 +48,7 @@ namespace NevernoteAPI.Controllers
             await _dbcontext.Notes.AddAsync(note);
             await _dbcontext.SaveChangesAsync();
 
-            return new JsonResult(note);
+            return new JsonResult("Note successfully added");
         }
 
         // DELETE api/notes?id=1

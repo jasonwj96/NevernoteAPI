@@ -5,8 +5,10 @@ import { NotelistComponent } from './components/notelist/notelist.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import 'rxjs';
-import { NoteService } from './services/note.service';
 import { NoteComponent } from './components/note/note.component';
+import { ReversePipe } from './pipes/reverse/reverse.pipe';
+import { SnackbarService } from './services/snackbar.service';
+import { NoteService } from './services/note.service';
 
 @NgModule({
   imports: [CommonModule, FormsModule, HttpClientModule],
@@ -14,8 +16,10 @@ import { NoteComponent } from './components/note/note.component';
     EditorComponent,
     EditorComponent,
     NotelistComponent,
-    NoteComponent
+    NoteComponent,
+    ReversePipe
   ],
+  providers: [SnackbarService, NoteService],
   exports: [EditorComponent, NotelistComponent]
 })
 export class WorkspaceModule {}
