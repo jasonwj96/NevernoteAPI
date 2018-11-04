@@ -11,15 +11,12 @@ import { SnackbarService } from './snackbar.service';
 })
 export class NoteService {
   private selectedNote$: BehaviorSubject<Note>;
-
-  private noteList$: Observable<Note[]>;
   private apiUrl = environment.API_URL;
 
   constructor(
     private http: HttpClient,
     private snackbarService: SnackbarService
   ) {
-    this.noteList$ = this.loadNotelist();
     this.snackbarService.newMessage('Welcome back!');
     this.selectedNote$ = new BehaviorSubject<Note>(
       new Note(0, null, null, null)
@@ -28,28 +25,23 @@ export class NoteService {
 
   selectNote(selectedNote: Note) {
     this.selectedNote$.next(selectedNote);
+    console.log(selectedNote);
+    console.log(this.selectedNote$);
   }
 
   getSelectedNote(): BehaviorSubject<Note> {
     return this.selectedNote$;
   }
 
-  createNote() {
-    this.http
-      .post(this.apiUrl, this.selectedNote$)
-      .subscribe((messageObj: { message: string }) => {
-        this.snackbarService.newMessage(messageObj.message);
-      });
-  }
+  createNote(): Observable<object> {
+    const note: Note = this.getSelectedNote().getValue();
+    console.log(note);
 
-  // Returns the notelist$ field from this service
-  getNotelist(): Observable<Note[]> {
-    return this.noteList$;
+    return this.http.put<object>(`${this.apiUrl}`, note);
   }
 
   // Retrieves the notelist from the API
   loadNotelist(): Observable<Note[]> {
-    // return this.http.get<Note[]>(this.apiUrl) as BehaviorSubject<Note[]>;
     return this.http.get<Note[]>(this.apiUrl);
   }
 }

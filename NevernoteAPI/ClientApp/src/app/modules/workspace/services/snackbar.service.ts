@@ -5,7 +5,7 @@ import { MatSnackBar } from '@angular/material';
   providedIn: 'root'
 })
 export class SnackbarService {
-  snackBarDuration = 4000; // miliseconds
+  snackBarDuration = 9999; // miliseconds
   snackBarAction = `ok`; // the text on the confirmation message in the snackbar
 
   constructor(private snackBar: MatSnackBar) {}

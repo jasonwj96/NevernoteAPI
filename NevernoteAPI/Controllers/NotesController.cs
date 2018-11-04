@@ -12,7 +12,6 @@ using Microsoft.EntityFrameworkCore;
 
 namespace NevernoteAPI.Controllers
 {
-
     [ApiController]
     [Route("/api/[controller]")]
     public class NotesController : ControllerBase
@@ -41,13 +40,13 @@ namespace NevernoteAPI.Controllers
 
         // POST api/notes
         [HttpPost]
-        public async Task<IActionResult> Post([FromBody] Note note)
+        public async Task<ActionResult> Post([FromBody] Note note)
         {
             note.DateCreated = Today();
 
             await _dbcontext.Notes.AddAsync(note);
             await _dbcontext.SaveChangesAsync();
-
+            
             return new JsonResult("Note successfully added");
         }
 
@@ -62,11 +61,11 @@ namespace NevernoteAPI.Controllers
             return new JsonResult("Note successfully deleted");
         }
 
-        // PUT api/notes?id=1
+        // PUT api/notes
         [HttpPut]
-        public async Task<ActionResult> Put([FromQuery] int id, [FromBody] Note note)
+        public async Task<ActionResult> Put([FromBody] Note note)
         {
-            var entity = await _dbcontext.Notes.FirstOrDefaultAsync(n => n.Id == id);
+            var entity = await _dbcontext.Notes.FirstOrDefaultAsync(n => n.Id == note.Id);
 
             entity.Title = note.Title;
             entity.Description = note.Description;

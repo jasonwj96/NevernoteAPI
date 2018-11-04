@@ -9,7 +9,7 @@
 
   <!-- Tasklist -->
   <div id="list">
-    <div *ngFor="let note of notelist$ | async">
+    <div *ngFor="let note of notelist$ | async | reverse">
       <app-task [note]="note"></app-task>
     </div>
 
