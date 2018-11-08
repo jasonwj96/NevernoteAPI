@@ -9,10 +9,14 @@ import { Note } from '../../Models/Note';
   styleUrls: ['./notelist.component.scss']
 })
 export class NotelistComponent implements OnInit {
-  notelist$: Observable<Note[]>;
-  constructor(public noteService: NoteService) {}
+  notelist: Note[];
+  
+  constructor(public noteService: NoteService) { }
 
   ngOnInit() {
-    this.notelist$ = this.noteService.loadNotelist();
+    this.noteService.loadNotelist().subscribe(value => {
+      this.notelist = value as Note[];
+    });
   }
+
 }

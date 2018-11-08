@@ -33,11 +33,21 @@ export class NoteService {
     return this.selectedNote$;
   }
 
-  createNote(): Observable<object> {
+  createNote(): Observable<string> {
     const note: Note = this.getSelectedNote().getValue();
-    console.log(note);
+ 
+    return this.http.put<string>(`${this.apiUrl}`, note);
+  }
 
-    return this.http.put<object>(`${this.apiUrl}`, note);
+  deleteNote(): Observable<string> {
+    const id: number = this.getSelectedNote().getValue().Id;
+
+    if (id) {
+      return this.http.delete<string>(`${this.apiUrl}?id=${id}`);
+    }
+
+    return null;
+   
   }
 
   // Retrieves the notelist from the API

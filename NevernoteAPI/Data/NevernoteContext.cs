@@ -28,7 +28,7 @@ namespace NevernoteAPI.Data
                 entity.Property(e => e.Id)
                     .ValueGeneratedOnAdd();
 
-                entity.Property(e => e.DateCreated)
+                entity.Property(e => e.LastUpdated)
                     .IsRequired()
                     .HasMaxLength(50);
 

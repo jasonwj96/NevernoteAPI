@@ -30,7 +30,6 @@ namespace NevernoteAPI
 
         public void ConfigureServices(IServiceCollection services)
         {
-
             services.AddMvc()
                 .SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
@@ -70,6 +69,7 @@ namespace NevernoteAPI
                 if (env.IsDevelopment())
                 {
                     spa.UseAngularCliServer(npmScript: "start");
+                    spa.Options.StartupTimeout = new TimeSpan(0, 0, 80);
                 }
             });
         }

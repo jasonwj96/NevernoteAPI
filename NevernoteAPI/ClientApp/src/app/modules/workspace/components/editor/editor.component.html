@@ -11,7 +11,7 @@
     <button id="save-btn" class="editor-button" (mouseup)="saveNote()">
       <i class="far fa-save"></i>
     </button>
-    <button id="delete-btn">
+    <button id="delete-btn" (click)="deleteNote()">
       <i class="far fa-trash-alt"></i>
     </button>
   </div>
@@ -33,7 +33,7 @@
 
   <!-- Input and textarea -->
   <div id="date-display">
-    <p *ngIf="(selectedNote$ | async)?.dateCreated != ''">Last updated: {{(selectedNote$ | async)?.dateCreated}}</p>
+    <p *ngIf="(selectedNote$ | async)?.lastUpdated != ''">Last updated: {{(selectedNote$ | async)?.dateCreated}}</p>
   </div>
 
   <div id="inputarea">

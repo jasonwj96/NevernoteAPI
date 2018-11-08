@@ -1,14 +1,14 @@
 ﻿using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
-using NevernoteAPI.Models;
+using Microsoft.EntityFrameworkCore;
 using NevernoteAPI.Data;
+using NevernoteAPI.Models;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
 
 namespace NevernoteAPI.Controllers
 {
@@ -40,36 +40,37 @@ namespace NevernoteAPI.Controllers
 
         // POST api/notes
         [HttpPost]
-        public async Task<ActionResult> Post([FromBody] Note note)
+        public async Task<string> Post([FromBody] Note note)
         {
-            note.DateCreated = Today();
+            note.LastUpdated = Today();
 
             await _dbcontext.Notes.AddAsync(note);
             await _dbcontext.SaveChangesAsync();
-            
-            return new JsonResult("Note successfully added");
+
+            return "Note successfully added";
         }
 
         // DELETE api/notes?id=1
         [HttpDelete]
-        public async Task<ActionResult> Delete([FromQuery] int id)
+        public async Task<string> Delete([FromQuery] int id)
         {
             _dbcontext.Notes.Remove(_dbcontext.Notes.Find(id));
 
             await _dbcontext.SaveChangesAsync();
 
-            return new JsonResult("Note successfully deleted");
+            return "Note successfully deleted";
         }
 
         // PUT api/notes
         [HttpPut]
-        public async Task<ActionResult> Put([FromBody] Note note)
+        public async Task<string> Put([FromBody] Note note)
         {
+
             var entity = await _dbcontext.Notes.FirstOrDefaultAsync(n => n.Id == note.Id);
 
             entity.Title = note.Title;
             entity.Description = note.Description;
-            entity.DateCreated = Today();
+            entity.LastUpdated = Today();
             entity.IsFavorite = note.IsFavorite;
             entity.Tags = note.Tags;
 
@@ -77,7 +78,7 @@ namespace NevernoteAPI.Controllers
 
             await _dbcontext.SaveChangesAsync();
 
-            return new JsonResult("Note successfully updated");
+            return "Note successfully updated";
         }
     }
 }

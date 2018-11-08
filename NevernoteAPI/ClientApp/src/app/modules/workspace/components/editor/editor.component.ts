@@ -27,10 +27,17 @@ export class EditorComponent implements OnInit {
   saveNote() {
     this.noteService
       .createNote()
-      .subscribe((messageObj: { message: string }) => {
-        console.log(messageObj);
-        this.snackbarService.newMessage(messageObj.message);
+      .subscribe((message: string) => {
+        this.snackbarService.newMessage(message);
       });
+  }
+
+  deleteNote() {
+    this.noteService
+      .deleteNote()
+      .subscribe((message:string) => {
+        this.snackbarService.newMessage(message);
+    });
   }
 
   addTag() {

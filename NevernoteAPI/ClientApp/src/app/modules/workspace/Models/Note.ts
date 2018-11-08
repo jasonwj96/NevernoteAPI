@@ -2,7 +2,7 @@ export class Note {
   Id: number;
   title: string;
   description: string;
-  dateCreated: string;
+  lastUpdated: string;
   isFavorite: boolean;
   tags: string[];
 
@@ -10,12 +10,12 @@ export class Note {
     Id: number,
     title: string,
     description: string,
-    dateCreated: string
+    lastUpdated: string
   ) {
     this.Id = Id;
     this.title = title;
     this.description = description;
-    this.dateCreated = dateCreated;
+    this.lastUpdated = lastUpdated;
     this.isFavorite = false;
     this.tags = null;
   }
